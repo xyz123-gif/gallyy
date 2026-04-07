@@ -33,7 +33,10 @@ export function AuthForm({
               id="username"
               type="text"
               inputMode="text"
-              autoComplete="username"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="none"
+              spellCheck="false"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
               placeholder="yourname"
@@ -90,21 +93,21 @@ export function AuthForm({
 
       <section className="heroSection">
         <h2>Your Memories, <span className="highlight">Perfectly Secured.</span></h2>
-        <p>Access your private gallery from any device. Encrypted, fast, and always with you.</p>
+        <p>Access your private assets from any device. Encrypted, fast, and always with you.</p>
         
         <div className="featureList">
           <div className="featureItem">
             <div className="featureIcon"><Icons.Shield /></div>
             <div>
               <h4>Privacy First</h4>
-              <p>Your photos are protected by Supabase's military-grade security.</p>
+              <p>Your assets are protected by military-grade security protocols.</p>
             </div>
           </div>
           <div className="featureItem">
             <div className="featureIcon"><Icons.Zap /></div>
             <div>
               <h4>Instant Access</h4>
-              <p>Lightning fast uploads and dynamic gallery loading.</p>
+              <p>Lightning fast uploads and dynamic vault item loading.</p>
             </div>
           </div>
         </div>

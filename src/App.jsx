@@ -13,7 +13,7 @@ import { Gallery } from './components/Gallery'
 import { DeleteModal } from './components/DeleteModal'
 
 function App() {
-  const [authMode, setAuthMode] = useState('signup')
+  const [authMode, setAuthMode] = useState('login')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [session, setSession] = useState(null)
@@ -450,10 +450,10 @@ function App() {
       <main className="app">
         <header className="mainHeader">
           <div className="logoArea">
-            <div className="logoIcon"><Icons.Camera /></div>
-            <h1>Photo Vault</h1>
+            <div className="logoIcon"><Icons.Shield /></div>
+            <h1>Your Vault</h1>
           </div>
-          <p>Private end-to-end media storage.</p>
+          <p>Your safe, encrypted digital vault.</p>
         </header>
 
         {!session ? (

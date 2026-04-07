@@ -1,4 +1,4 @@
-# Mobile Photo Vault (Supabase)
+# Your Vault (Supabase)
 
 Mobile-first website with:
 - username + password signup/login

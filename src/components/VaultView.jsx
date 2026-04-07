@@ -22,7 +22,7 @@ export function Gallery({
             </>
           ) : (
             <>
-              <Icons.Plus /> <span>Upload Item</span>
+              <Icons.Plus /> <span>Secure Entry</span>
             </>
           )}
           <input
@@ -41,7 +41,7 @@ export function Gallery({
       <div className="photoCount">
         {loadingPhotos
           ? 'Fetching records...'
-          : `${photos.length} vault item${photos.length !== 1 ? 's' : ''}`}
+          : `${photos.length} vault entr${photos.length !== 1 ? 'ies' : 'y'}`}
       </div>
 
       {loadingPhotos && photos.length === 0 ? (
@@ -54,10 +54,10 @@ export function Gallery({
         </div>
       ) : photos.length === 0 ? (
         <div className="emptyState">
-          <div className="emptyIcon"><Icons.Lock /></div>
-          <p className="emptyTitle">Your vault is empty</p>
+          <div className="emptyIcon"><Icons.Shield /></div>
+          <p className="emptyTitle">Vault Clear</p>
           <p className="emptyDesc">
-            Begin your secure collection by uploading your first item above.
+            Begin your secure collection by uploading your first entry above.
           </p>
         </div>
       ) : (
@@ -84,7 +84,7 @@ export function Gallery({
                 <button
                   className="deleteBtn"
                   onClick={() => handleDeleteClick(photo)}
-                  title="Delete from vault"
+                  title="Remove from vault"
                 >
                   <Icons.Trash />
                 </button>

@@ -291,18 +291,29 @@
 }
 
 .switchBtn {
-  border: none;
-  background: transparent;
-  color: #64748b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: #94a3b8;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  padding: 8px;
-  transition: color 0.2s;
+  padding: 12px 24px;
+  border-radius: 14px;
+  margin-top: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
 }
 
 .switchBtn:hover {
-  color: #818cf8;
+  background: rgba(255, 255, 255, 0.07);
+  color: #f1f5f9;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.switchBtn:active {
+  transform: scale(0.98);
 }
 
 /* ── Gallery Card ────────────────────────── */
