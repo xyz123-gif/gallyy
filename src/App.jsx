@@ -31,6 +31,31 @@ function App() {
     [username],
   )
 
+  // ── Ultra-Fast Privacy Shield & Auto-Lock ──────
+  useEffect(() => {
+    // Tell the high-speed listener if we are authenticated
+    window.isVaultAuthenticated = !!session
+
+    // Ensure the high-speed shield is hidden when we are active
+    const shield = document.getElementById('privacy-shield')
+    if (shield) shield.classList.remove('active')
+
+    const lockVault = () => {
+      if (session) {
+        handleLogout()
+      }
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        lockVault()
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [session])
+
   const authEmail = `${normalizedUsername}@mobile-gallery.app`
 
   const loadPhotos = async (userId) => {
@@ -379,9 +404,37 @@ function App() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
+    // Reset ALL sensitive states
+    setPhotos([])
+    setLightboxIndex(-1)
     setUsername('')
     setStatus('Logged out.')
+    
+    // Deactivate the high-speed shield globally
+    const shield = document.getElementById('privacy-shield')
+    if (shield) shield.classList.remove('active')
   }
+
+  // ── Mobile Back-Button Security (Auto-Lock) ────────
+  useEffect(() => {
+    const handleBackButton = (event) => {
+      if (session) {
+        event.preventDefault()
+        // Auto-Lock for privacy if user tries to "go back"
+        handleLogout()
+        // Force the app back to a safe clean state
+        window.history.pushState(null, '', window.location.pathname)
+      }
+    }
+
+    if (session) {
+      // Create a dummy history entry so the first "Back" is intercepted by us
+      window.history.pushState(null, '', window.location.pathname)
+      window.addEventListener('popstate', handleBackButton)
+    }
+
+    return () => window.removeEventListener('popstate', handleBackButton)
+  }, [session])
 
   const formatDate = (dateStr) => {
     const d = new Date(dateStr)

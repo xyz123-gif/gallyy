@@ -8,6 +8,43 @@
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Super-Fast Privacy Shield (Outside React for Instant Snap) -->
+    <div id="privacy-shield" class="privacyShield">
+      <div class="lockIcon">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      </div>
+      <h2>Vault Locked</h2>
+      <p>Security protocol active.</p>
+    </div>
+
     <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      // High-Priority Instant Trigger for Task Switcher
+      const shield = document.getElementById('privacy-shield');
+      
+      const triggerShield = () => { 
+        // ONLY trigger if the user is logged in
+        if (window.isVaultAuthenticated) {
+          shield.classList.add('active'); 
+        }
+      };
+
+      const hideShield = () => {
+        shield.classList.remove('active');
+      };
+
+      // Faster "blur" for minimizing
+      window.addEventListener('blur', triggerShield, true);
+      
+      // Clear the shield the second we return/focus
+      window.addEventListener('focus', hideShield, true);
+      
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') triggerShield();
+        else hideShield();
+      }, true);
+    </script>
   </body>
 </html>

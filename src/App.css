@@ -615,3 +615,47 @@
     padding: 24px 18px;
   }
 }
+
+/* ── Privacy Shield & Visibility Security ─────── */
+.privacyShield, #privacy-shield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #020617; /* High-Security Deep Black */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000; /* Highest possible layer */
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: none; /* INSTANT snap, no animation */
+}
+
+.privacyShield.active, #privacy-shield.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#privacy-shield .lockIcon {
+  width: 80px;
+  height: 80px;
+  color: #818cf8;
+  margin-bottom: 24px;
+}
+
+.privacyShield h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f1f5f9;
+}
+
+.privacyShield p {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
